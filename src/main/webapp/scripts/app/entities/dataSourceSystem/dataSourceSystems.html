@@ -1,28 +1,28 @@
 <div>
 
-    <h2>Jobs</h2>
+    <h2>DataSourceSystems</h2>
 
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="job.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>配置新的任务</span>
+                <button class="btn btn-primary" ui-sref="dataSourceSystem.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new DataSourceSystem</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="deleteJobConfirmation">
+    <div class="modal fade" id="deleteDataSourceSystemConfirmation">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="deleteForm" ng-submit="confirmDelete(job.id)">
+                <form name="deleteForm" ng-submit="confirmDelete(dataSourceSystem.id)">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
                         <h4 class="modal-title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Job?</p>
+                        <p>Are you sure you want to delete this DataSourceSystem?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -43,44 +43,40 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>WsTargetUrl</th>
-                    <th>StartHour</th>
-                    <th>StartMin</th>
-                    <th>StopHour</th>
-                    <th>StopMin</th>
-                    <th>LoginUserName</th>
-                    <th>LoginPassword</th>
-                    <th>IntervalMinutes</th>
+                    <th>Identity</th>
+                    <th>LoginPageUrl</th>
+                    <th>QueryPageUrl</th>
+                    <th>QueryParameter1</th>
+                    <th>QueryParameter2</th>
+                    <th>QueryParameter3</th>
+                    <th>SingleDetailUrl</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="job in jobs">
-                    <td><a ui-sref="job.detail({id:job.id})">{{job.id}}</a></td>
-                    <td>{{job.name}}</td>
-                    <td>{{job.description}}</td>
-                    <td>{{job.wsTargetUrl}}</td>
-                    <td>{{job.startHour}}</td>
-                    <td>{{job.startMin}}</td>
-                    <td>{{job.stopHour}}</td>
-                    <td>{{job.stopMin}}</td>
-                    <td>{{job.loginUserName}}</td>
-                    <td>{{job.loginPassword}}</td>
-                    <td>{{job.intervalMinutes}}</td>
+                <tr ng-repeat="dataSourceSystem in dataSourceSystems">
+                    <td><a ui-sref="dataSourceSystem.detail({id:dataSourceSystem.id})">{{dataSourceSystem.id}}</a></td>
+                    <td>{{dataSourceSystem.name}}</td>
+                    <td>{{dataSourceSystem.identity}}</td>
+                    <td>{{dataSourceSystem.loginPageUrl}}</td>
+                    <td>{{dataSourceSystem.queryPageUrl}}</td>
+                    <td>{{dataSourceSystem.queryParameter1}}</td>
+                    <td>{{dataSourceSystem.queryParameter2}}</td>
+                    <td>{{dataSourceSystem.queryParameter3}}</td>
+                    <td>{{dataSourceSystem.singleDetailUrl}}</td>
                     <td>
                         <button type="submit"
-                                ui-sref="job.detail({id:job.id})"
+                                ui-sref="dataSourceSystem.detail({id:dataSourceSystem.id})"
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
                         </button>
                         <button type="submit"
-                                ui-sref="job.edit({id:job.id})"
+                                ui-sref="dataSourceSystem.edit({id:dataSourceSystem.id})"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
                         </button>
                         <button type="submit"
-                                ng-click="delete(job.id)"
+                                ng-click="delete(dataSourceSystem.id)"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
                         </button>

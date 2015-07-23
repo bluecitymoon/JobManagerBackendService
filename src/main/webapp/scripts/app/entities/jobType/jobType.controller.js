@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('yojmbApp')
-    .controller('JobController', function ($scope, Job, ParseLinks) {
-        $scope.jobs = [];
+    .controller('JobTypeController', function ($scope, JobType, ParseLinks) {
+        $scope.jobTypes = [];
         $scope.page = 1;
         $scope.loadAll = function() {
-            Job.query({page: $scope.page, per_page: 20}, function(result, headers) {
+            JobType.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
-                $scope.jobs = result;
+                $scope.jobTypes = result;
             });
         };
         $scope.loadPage = function(page) {
@@ -17,17 +17,17 @@ angular.module('yojmbApp')
         $scope.loadAll();
 
         $scope.delete = function (id) {
-            Job.get({id: id}, function(result) {
-                $scope.job = result;
-                $('#deleteJobConfirmation').modal('show');
+            JobType.get({id: id}, function(result) {
+                $scope.jobType = result;
+                $('#deleteJobTypeConfirmation').modal('show');
             });
         };
 
         $scope.confirmDelete = function (id) {
-            Job.delete({id: id},
+            JobType.delete({id: id},
                 function () {
                     $scope.loadAll();
-                    $('#deleteJobConfirmation').modal('hide');
+                    $('#deleteJobTypeConfirmation').modal('hide');
                     $scope.clear();
                 });
         };
@@ -38,6 +38,6 @@ angular.module('yojmbApp')
         };
 
         $scope.clear = function () {
-            $scope.job = {name: null, description: null, wsTargetUrl: null, startHour: null, startMin: null, stopHour: null, stopMin: null, loginUserName: null, loginPassword: null, intervalMinutes: null, id: null};
+            $scope.jobType = {description: null, identity: null, column1: null, value1: null, column2: null, value2: null, id: null};
         };
     });

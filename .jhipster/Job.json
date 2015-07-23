@@ -1,5 +1,26 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "jobType",
+            "relationshipNameCapitalized": "JobType",
+            "relationshipFieldName": "jobType",
+            "otherEntityName": "jobType",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "JobType",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "dataSourceSystem",
+            "relationshipNameCapitalized": "DataSourceSystem",
+            "relationshipFieldName": "dataSourceSystem",
+            "otherEntityName": "dataSourceSystem",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "DataSourceSystem",
+            "ownerSide": true
+        }
+    ],
     "fields": [
         {
             "fieldId": 1,
@@ -9,20 +30,109 @@
             "fieldNameCapitalized": "Name",
             "fieldNameUnderscored": "name",
             "fieldInJavaBeanMethod": "Name",
-            "fieldValidate": true,
-            "fieldValidateRules": []
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description",
+            "fieldInJavaBeanMethod": "Description",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "wsTargetUrl",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "WsTargetUrl",
+            "fieldNameUnderscored": "ws_target_url",
+            "fieldInJavaBeanMethod": "WsTargetUrl",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "startHour",
+            "fieldType": "Integer",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "StartHour",
+            "fieldNameUnderscored": "start_hour",
+            "fieldInJavaBeanMethod": "StartHour",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "startMin",
+            "fieldType": "Integer",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "StartMin",
+            "fieldNameUnderscored": "start_min",
+            "fieldInJavaBeanMethod": "StartMin",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "stopHour",
+            "fieldType": "Integer",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "StopHour",
+            "fieldNameUnderscored": "stop_hour",
+            "fieldInJavaBeanMethod": "StopHour",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "stopMin",
+            "fieldType": "Integer",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "StopMin",
+            "fieldNameUnderscored": "stop_min",
+            "fieldInJavaBeanMethod": "StopMin",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "loginUserName",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "LoginUserName",
+            "fieldNameUnderscored": "login_user_name",
+            "fieldInJavaBeanMethod": "LoginUserName",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "loginPassword",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "LoginPassword",
+            "fieldNameUnderscored": "login_password",
+            "fieldInJavaBeanMethod": "LoginPassword",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "intervalMinutes",
+            "fieldType": "Integer",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "IntervalMinutes",
+            "fieldNameUnderscored": "interval_minutes",
+            "fieldInJavaBeanMethod": "IntervalMinutes",
+            "fieldValidate": false
         }
     ],
     "fieldsContainOwnerManyToMany": false,
-    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOwnerOneToOne": true,
     "fieldsContainOneToMany": false,
     "fieldsContainLocalDate": false,
     "fieldsContainCustomTime": false,
     "fieldsContainBigDecimal": false,
     "fieldsContainDateTime": false,
     "fieldsContainDate": false,
-    "changelogDate": "20150721061518",
+    "changelogDate": "20150723070312",
     "dto": "no",
-    "pagination": "pager",
-    "validation": true
+    "pagination": "pagination",
+    "validation": false
 }

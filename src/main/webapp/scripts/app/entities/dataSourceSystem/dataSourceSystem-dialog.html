@@ -1,0 +1,74 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myDataSourceSystemLabel">Create or edit a DataSourceSystem</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" name="id"
+                    ng-model="dataSourceSystem.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="dataSourceSystem.name">
+
+        </div>
+        <div class="form-group">
+            <label for="field_identity">Identity</label>
+            <input type="text" class="form-control" name="identity" id="field_identity"
+                    ng-model="dataSourceSystem.identity">
+
+        </div>
+        <div class="form-group">
+            <label for="field_loginPageUrl">LoginPageUrl</label>
+            <input type="text" class="form-control" name="loginPageUrl" id="field_loginPageUrl"
+                    ng-model="dataSourceSystem.loginPageUrl">
+
+        </div>
+        <div class="form-group">
+            <label for="field_queryPageUrl">QueryPageUrl</label>
+            <input type="text" class="form-control" name="queryPageUrl" id="field_queryPageUrl"
+                    ng-model="dataSourceSystem.queryPageUrl">
+
+        </div>
+        <div class="form-group">
+            <label for="field_queryParameter1">QueryParameter1</label>
+            <input type="text" class="form-control" name="queryParameter1" id="field_queryParameter1"
+                    ng-model="dataSourceSystem.queryParameter1">
+
+        </div>
+        <div class="form-group">
+            <label for="field_queryParameter2">QueryParameter2</label>
+            <input type="text" class="form-control" name="queryParameter2" id="field_queryParameter2"
+                    ng-model="dataSourceSystem.queryParameter2">
+
+        </div>
+        <div class="form-group">
+            <label for="field_queryParameter3">QueryParameter3</label>
+            <input type="text" class="form-control" name="queryParameter3" id="field_queryParameter3"
+                    ng-model="dataSourceSystem.queryParameter3">
+
+        </div>
+        <div class="form-group">
+            <label for="field_singleDetailUrl">SingleDetailUrl</label>
+            <input type="text" class="form-control" name="singleDetailUrl" id="field_singleDetailUrl"
+                    ng-model="dataSourceSystem.singleDetailUrl">
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

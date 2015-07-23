@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the Job entity.
+ * Performance test for the JobType entity.
  */
-class JobGatlingTest extends Simulation {
+class JobTypeGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -48,7 +48,7 @@ class JobGatlingTest extends Simulation {
         "Authorization" -> "Bearer ${access_token}"
     )
 
-    val scn = scenario("Test the Job entity")
+    val scn = scenario("Test the JobType entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -72,26 +72,26 @@ class JobGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all jobs")
-            .get("/api/jobs")
+            exec(http("Get all jobTypes")
+            .get("/api/jobTypes")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new job")
-            .post("/api/jobs")
+            .exec(http("Create new jobType")
+            .post("/api/jobTypes")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "description":"SAMPLE_TEXT", "wsTargetUrl":"SAMPLE_TEXT", "startHour":"0", "startMin":"0", "stopHour":"0", "stopMin":"0", "loginUserName":"SAMPLE_TEXT", "loginPassword":"SAMPLE_TEXT", "intervalMinutes":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "description":"SAMPLE_TEXT", "identity":"SAMPLE_TEXT", "column1":"SAMPLE_TEXT", "value1":"SAMPLE_TEXT", "column2":"SAMPLE_TEXT", "value2":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_job_url")))
+            .check(headerRegex("Location", "(.*)").saveAs("new_jobType_url")))
             .pause(10)
             .repeat(5) {
-                exec(http("Get created job")
-                .get("${new_job_url}")
+                exec(http("Get created jobType")
+                .get("${new_jobType_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created job")
-            .delete("${new_job_url}")
+            .exec(http("Delete created jobType")
+            .delete("${new_jobType_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

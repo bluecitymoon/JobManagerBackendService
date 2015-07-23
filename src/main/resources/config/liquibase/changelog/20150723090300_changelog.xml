@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+   <changeSet author="jerry (generated)" id="1437642185723-1">
+      <addColumn tableName="JOB">
+         <column name="target_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="jerry (generated)" id="1437642185723-2">
+      <addForeignKeyConstraint baseColumnNames="target_id"
+                               baseTableName="JOB"
+                               constraintName="FK_9axwovp7xv0xjr09xulgoqed7"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="TARGET"/>
+   </changeSet>
+   <changeSet author="jerry (generated)" id="1437642185723-3">
+      <dropTable tableName="AUTOMATICJOB"/>
+   </changeSet>
+</databaseChangeLog>

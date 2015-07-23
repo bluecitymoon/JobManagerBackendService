@@ -41,6 +41,29 @@ public class JobResourceTest {
 
     private static final String DEFAULT_NAME = "SAMPLE_TEXT";
     private static final String UPDATED_NAME = "UPDATED_TEXT";
+    private static final String DEFAULT_DESCRIPTION = "SAMPLE_TEXT";
+    private static final String UPDATED_DESCRIPTION = "UPDATED_TEXT";
+    private static final String DEFAULT_WS_TARGET_URL = "SAMPLE_TEXT";
+    private static final String UPDATED_WS_TARGET_URL = "UPDATED_TEXT";
+
+    private static final Integer DEFAULT_START_HOUR = 0;
+    private static final Integer UPDATED_START_HOUR = 1;
+
+    private static final Integer DEFAULT_START_MIN = 0;
+    private static final Integer UPDATED_START_MIN = 1;
+
+    private static final Integer DEFAULT_STOP_HOUR = 0;
+    private static final Integer UPDATED_STOP_HOUR = 1;
+
+    private static final Integer DEFAULT_STOP_MIN = 0;
+    private static final Integer UPDATED_STOP_MIN = 1;
+    private static final String DEFAULT_LOGIN_USER_NAME = "SAMPLE_TEXT";
+    private static final String UPDATED_LOGIN_USER_NAME = "UPDATED_TEXT";
+    private static final String DEFAULT_LOGIN_PASSWORD = "SAMPLE_TEXT";
+    private static final String UPDATED_LOGIN_PASSWORD = "UPDATED_TEXT";
+
+    private static final Integer DEFAULT_INTERVAL_MINUTES = 0;
+    private static final Integer UPDATED_INTERVAL_MINUTES = 1;
 
     @Inject
     private JobRepository jobRepository;
@@ -61,6 +84,15 @@ public class JobResourceTest {
     public void initTest() {
         job = new Job();
         job.setName(DEFAULT_NAME);
+        job.setDescription(DEFAULT_DESCRIPTION);
+        job.setWsTargetUrl(DEFAULT_WS_TARGET_URL);
+        job.setStartHour(DEFAULT_START_HOUR);
+        job.setStartMin(DEFAULT_START_MIN);
+        job.setStopHour(DEFAULT_STOP_HOUR);
+        job.setStopMin(DEFAULT_STOP_MIN);
+        job.setLoginUserName(DEFAULT_LOGIN_USER_NAME);
+        job.setLoginPassword(DEFAULT_LOGIN_PASSWORD);
+        job.setIntervalMinutes(DEFAULT_INTERVAL_MINUTES);
     }
 
     @Test
@@ -79,6 +111,15 @@ public class JobResourceTest {
         assertThat(jobs).hasSize(databaseSizeBeforeCreate + 1);
         Job testJob = jobs.get(jobs.size() - 1);
         assertThat(testJob.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testJob.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testJob.getWsTargetUrl()).isEqualTo(DEFAULT_WS_TARGET_URL);
+        assertThat(testJob.getStartHour()).isEqualTo(DEFAULT_START_HOUR);
+        assertThat(testJob.getStartMin()).isEqualTo(DEFAULT_START_MIN);
+        assertThat(testJob.getStopHour()).isEqualTo(DEFAULT_STOP_HOUR);
+        assertThat(testJob.getStopMin()).isEqualTo(DEFAULT_STOP_MIN);
+        assertThat(testJob.getLoginUserName()).isEqualTo(DEFAULT_LOGIN_USER_NAME);
+        assertThat(testJob.getLoginPassword()).isEqualTo(DEFAULT_LOGIN_PASSWORD);
+        assertThat(testJob.getIntervalMinutes()).isEqualTo(DEFAULT_INTERVAL_MINUTES);
     }
 
     @Test
@@ -92,7 +133,16 @@ public class JobResourceTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(job.getId().intValue())))
-                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+                .andExpect(jsonPath("$.[*].wsTargetUrl").value(hasItem(DEFAULT_WS_TARGET_URL.toString())))
+                .andExpect(jsonPath("$.[*].startHour").value(hasItem(DEFAULT_START_HOUR)))
+                .andExpect(jsonPath("$.[*].startMin").value(hasItem(DEFAULT_START_MIN)))
+                .andExpect(jsonPath("$.[*].stopHour").value(hasItem(DEFAULT_STOP_HOUR)))
+                .andExpect(jsonPath("$.[*].stopMin").value(hasItem(DEFAULT_STOP_MIN)))
+                .andExpect(jsonPath("$.[*].loginUserName").value(hasItem(DEFAULT_LOGIN_USER_NAME.toString())))
+                .andExpect(jsonPath("$.[*].loginPassword").value(hasItem(DEFAULT_LOGIN_PASSWORD.toString())))
+                .andExpect(jsonPath("$.[*].intervalMinutes").value(hasItem(DEFAULT_INTERVAL_MINUTES)));
     }
 
     @Test
@@ -106,7 +156,16 @@ public class JobResourceTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(job.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.wsTargetUrl").value(DEFAULT_WS_TARGET_URL.toString()))
+            .andExpect(jsonPath("$.startHour").value(DEFAULT_START_HOUR))
+            .andExpect(jsonPath("$.startMin").value(DEFAULT_START_MIN))
+            .andExpect(jsonPath("$.stopHour").value(DEFAULT_STOP_HOUR))
+            .andExpect(jsonPath("$.stopMin").value(DEFAULT_STOP_MIN))
+            .andExpect(jsonPath("$.loginUserName").value(DEFAULT_LOGIN_USER_NAME.toString()))
+            .andExpect(jsonPath("$.loginPassword").value(DEFAULT_LOGIN_PASSWORD.toString()))
+            .andExpect(jsonPath("$.intervalMinutes").value(DEFAULT_INTERVAL_MINUTES));
     }
 
     @Test
@@ -127,6 +186,15 @@ public class JobResourceTest {
 
         // Update the job
         job.setName(UPDATED_NAME);
+        job.setDescription(UPDATED_DESCRIPTION);
+        job.setWsTargetUrl(UPDATED_WS_TARGET_URL);
+        job.setStartHour(UPDATED_START_HOUR);
+        job.setStartMin(UPDATED_START_MIN);
+        job.setStopHour(UPDATED_STOP_HOUR);
+        job.setStopMin(UPDATED_STOP_MIN);
+        job.setLoginUserName(UPDATED_LOGIN_USER_NAME);
+        job.setLoginPassword(UPDATED_LOGIN_PASSWORD);
+        job.setIntervalMinutes(UPDATED_INTERVAL_MINUTES);
         restJobMockMvc.perform(put("/api/jobs")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(job)))
@@ -137,6 +205,15 @@ public class JobResourceTest {
         assertThat(jobs).hasSize(databaseSizeBeforeUpdate);
         Job testJob = jobs.get(jobs.size() - 1);
         assertThat(testJob.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testJob.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testJob.getWsTargetUrl()).isEqualTo(UPDATED_WS_TARGET_URL);
+        assertThat(testJob.getStartHour()).isEqualTo(UPDATED_START_HOUR);
+        assertThat(testJob.getStartMin()).isEqualTo(UPDATED_START_MIN);
+        assertThat(testJob.getStopHour()).isEqualTo(UPDATED_STOP_HOUR);
+        assertThat(testJob.getStopMin()).isEqualTo(UPDATED_STOP_MIN);
+        assertThat(testJob.getLoginUserName()).isEqualTo(UPDATED_LOGIN_USER_NAME);
+        assertThat(testJob.getLoginPassword()).isEqualTo(UPDATED_LOGIN_PASSWORD);
+        assertThat(testJob.getIntervalMinutes()).isEqualTo(UPDATED_INTERVAL_MINUTES);
     }
 
     @Test

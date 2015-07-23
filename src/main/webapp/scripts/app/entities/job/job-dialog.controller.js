@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('yojmbApp').controller('JobDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Job',
-        function($scope, $stateParams, $modalInstance, entity, Job) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Job', 'JobType', 'DataSourceSystem',
+        function($scope, $stateParams, $modalInstance, entity, Job, JobType, DataSourceSystem) {
 
         $scope.job = entity;
+        $scope.jobtypes = JobType.query();
+        $scope.datasourcesystems = DataSourceSystem.query();
         $scope.load = function(id) {
             Job.get({id : id}, function(result) {
                 $scope.job = result;

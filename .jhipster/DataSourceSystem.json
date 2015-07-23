@@ -1,0 +1,109 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "job",
+            "relationshipNameCapitalized": "Job",
+            "relationshipFieldName": "job",
+            "otherEntityName": "job",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Job",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "dataSourceSystem"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "identity",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Identity",
+            "fieldNameUnderscored": "identity",
+            "fieldInJavaBeanMethod": "Identity",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "loginPageUrl",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "LoginPageUrl",
+            "fieldNameUnderscored": "login_page_url",
+            "fieldInJavaBeanMethod": "LoginPageUrl",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "queryPageUrl",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "QueryPageUrl",
+            "fieldNameUnderscored": "query_page_url",
+            "fieldInJavaBeanMethod": "QueryPageUrl",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "queryParameter1",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "QueryParameter1",
+            "fieldNameUnderscored": "query_parameter1",
+            "fieldInJavaBeanMethod": "QueryParameter1",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "queryParameter2",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "QueryParameter2",
+            "fieldNameUnderscored": "query_parameter2",
+            "fieldInJavaBeanMethod": "QueryParameter2",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "queryParameter3",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "QueryParameter3",
+            "fieldNameUnderscored": "query_parameter3",
+            "fieldInJavaBeanMethod": "QueryParameter3",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "singleDetailUrl",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "SingleDetailUrl",
+            "fieldNameUnderscored": "single_detail_url",
+            "fieldInJavaBeanMethod": "SingleDetailUrl",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150723064930",
+    "dto": "no",
+    "pagination": "pagination",
+    "validation": false
+}

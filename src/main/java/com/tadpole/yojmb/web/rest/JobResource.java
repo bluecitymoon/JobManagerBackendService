@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -39,7 +38,7 @@ public class JobResource {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Job> create(@Valid @RequestBody Job job) throws URISyntaxException {
+    public ResponseEntity<Job> create(@RequestBody Job job) throws URISyntaxException {
         log.debug("REST request to save Job : {}", job);
         if (job.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new job cannot already have an ID").body(null);
@@ -55,7 +54,7 @@ public class JobResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Job> update(@Valid @RequestBody Job job) throws URISyntaxException {
+    public ResponseEntity<Job> update(@RequestBody Job job) throws URISyntaxException {
         log.debug("REST request to update Job : {}", job);
         if (job.getId() == null) {
             return create(job);

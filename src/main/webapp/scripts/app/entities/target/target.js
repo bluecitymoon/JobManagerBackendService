@@ -3,82 +3,82 @@
 angular.module('yojmbApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('job', {
+            .state('target', {
                 parent: 'entity',
-                url: '/jobs',
+                url: '/targets',
                 data: {
                     roles: ['ROLE_USER'],
-                    pageTitle: 'Jobs'
+                    pageTitle: 'Targets'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/job/jobs.html',
-                        controller: 'JobController'
+                        templateUrl: 'scripts/app/entities/target/targets.html',
+                        controller: 'TargetController'
                     }
                 },
                 resolve: {
                 }
             })
-            .state('job.detail', {
+            .state('target.detail', {
                 parent: 'entity',
-                url: '/job/{id}',
+                url: '/target/{id}',
                 data: {
                     roles: ['ROLE_USER'],
-                    pageTitle: 'Job'
+                    pageTitle: 'Target'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/job/job-detail.html',
-                        controller: 'JobDetailController'
+                        templateUrl: 'scripts/app/entities/target/target-detail.html',
+                        controller: 'TargetDetailController'
                     }
                 },
                 resolve: {
-                    entity: ['$stateParams', 'Job', function($stateParams, Job) {
-                        return Job.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'Target', function($stateParams, Target) {
+                        return Target.get({id : $stateParams.id});
                     }]
                 }
             })
-            .state('job.new', {
-                parent: 'job',
+            .state('target.new', {
+                parent: 'target',
                 url: '/new',
                 data: {
                     roles: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
                     $modal.open({
-                        templateUrl: 'scripts/app/entities/job/job-dialog.html',
-                        controller: 'JobDialogController',
+                        templateUrl: 'scripts/app/entities/target/target-dialog.html',
+                        controller: 'TargetDialogController',
                         size: 'lg',
                         resolve: {
                             entity: function () {
-                                return {name: null, description: null, wsTargetUrl: null, startHour: null, startMin: null, stopHour: null, stopMin: null, loginUserName: null, loginPassword: null, intervalMinutes: null, id: null};
+                                return {name: null, id: null};
                             }
                         }
                     }).result.then(function(result) {
-                        $state.go('job', null, { reload: true });
+                        $state.go('target', null, { reload: true });
                     }, function() {
-                        $state.go('job');
+                        $state.go('target');
                     })
                 }]
             })
-            .state('job.edit', {
-                parent: 'job',
+            .state('target.edit', {
+                parent: 'target',
                 url: '/{id}/edit',
                 data: {
                     roles: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
                     $modal.open({
-                        templateUrl: 'scripts/app/entities/job/job-dialog.html',
-                        controller: 'JobDialogController',
+                        templateUrl: 'scripts/app/entities/target/target-dialog.html',
+                        controller: 'TargetDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['Job', function(Job) {
-                                return Job.get({id : $stateParams.id});
+                            entity: ['Target', function(Target) {
+                                return Target.get({id : $stateParams.id});
                             }]
                         }
                     }).result.then(function(result) {
-                        $state.go('job', null, { reload: true });
+                        $state.go('target', null, { reload: true });
                     }, function() {
                         $state.go('^');
                     })
